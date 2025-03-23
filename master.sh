@@ -89,3 +89,8 @@ ufw allow 6443
 #   namespace: metallb-system
 # " >> metallb-config.yaml
 # kubectl apply -f metallb-config.yaml
+
+
+# echo "[TASK 12] Token create"
+# kubeadm token create --print-join-command
+# de momento se tiene que ejecutar el comando de forma manual en el main y en el worker resultado como sudo 
