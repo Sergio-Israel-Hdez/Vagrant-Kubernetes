@@ -67,3 +67,25 @@ su - vagrant -c "kubectl apply -f https://raw.githubusercontent.com/projectcalic
 
 # Open required Kubernetes API port
 ufw allow 6443
+
+
+# echo "[TASK 11] Install metallb"
+# kubectl apply -f https://raw.githubusercontent.com/metallb/metallb/v0.14.9/config/manifests/metallb-native.yaml
+# mkdir metallb-config
+# cd metallb-config
+# echo "apiVersion: metallb.io/v1beta1
+# kind: IPAddressPool
+# metadata:
+#   name: my-pool
+#   namespace: metallb-system
+# spec:
+#   addresses:
+#     - 192.168.56.100-192.168.56.200  # Ajusta el rango según disponibilidad
+# ---
+# apiVersion: metallb.io/v1beta1
+# kind: L2Advertisement
+# metadata:
+#   name: my-advertisement
+#   namespace: metallb-system
+# " >> metallb-config.yaml
+# kubectl apply -f metallb-config.yaml
