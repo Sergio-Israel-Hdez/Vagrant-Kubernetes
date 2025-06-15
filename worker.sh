@@ -45,3 +45,12 @@ echo "[TASK 7] restarting services"
 systemctl restart containerd
 systemctl restart kubelet
 systemctl restart docker
+
+
+echo "[TASK 8] Join Kubernetes Cluster"
+echo "$1"
+if [ -f /vagrant/join-command.sh ]; then
+  bash /vagrant/join-command.sh
+else
+  echo "[TASK 8] Join command not found"
+fi

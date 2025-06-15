@@ -91,6 +91,7 @@ ufw allow 6443
 # kubectl apply -f metallb-config.yaml
 
 
-# echo "[TASK 12] Token create"
-# kubeadm token create --print-join-command
+echo "[TASK 11] Token create"
+kubeadm token create --print-join-command > /vagrant/join-command.sh
+chmod +x /vagrant/join-command.sh
 # de momento se tiene que ejecutar el comando de forma manual en el main y en el worker resultado como sudo 

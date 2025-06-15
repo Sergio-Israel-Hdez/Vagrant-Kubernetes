@@ -1,10 +1,11 @@
 # -*- mode: ruby -*-
 #kubeadm token create --print-join-command
 # vi: set ft=ruby :
-NODES_WORKERS = 2
+NODES_WORKERS = 1
 Vagrant.configure("2") do |config|
   config.vm.box = "ubuntu/focal64"
   config.vm.box_check_update = false
+  config.vm.synced_folder ".", "/vagrant"
 
   # Kubernetes Master Node
   config.vm.define "k8s-master" do |master|
@@ -31,8 +32,8 @@ Vagrant.configure("2") do |config|
         vb.memory = 2048
         vb.cpus = 1
       end
-      
-      worker.vm.provision "shell", path: "worker.sh"
+
+      worker.vm.provision "shell", path: "worker.sh", args: ["192.168.56.#{i + 10}"]
     end
   end
 end
